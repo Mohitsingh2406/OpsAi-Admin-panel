@@ -1,7 +1,9 @@
 "use client";
 
-import { Bell, ChevronRight, Command, HelpCircle, Search } from "lucide-react";
+import { Bell, ChevronRight, HelpCircle, Search } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { getSessionData } from "@/lib/audit-store";
 
 const names: Record<string, string> = {
   "/admin": "Command Center",
@@ -14,12 +16,23 @@ const names: Record<string, string> = {
   "/admin/seo": "SEO & Pages",
   "/admin/system": "System Health",
   "/admin/settings": "Settings",
+  "/admin/audit-trail": "Audit Trail",
 };
 
 export default function Topbar({ email }: { email: string }) {
   const pathname = usePathname();
   const page = names[pathname] || "Admin";
-  const initials = email.split("@")[0].slice(0, 2).toUpperCase();
+  
+  const [empId, setEmpId] = useState("...");
+  const [sessId, setSessId] = useState("...");
+
+  useEffect(() => {
+    const { employeeId, sessionId } = getSessionData();
+    if (employeeId) setEmpId(employeeId);
+    if (sessionId) setSessId(sessionId.replace("SESSION-", ""));
+  }, []);
+
+  const initials = empId.startsWith("EMP-") ? empId.replace("EMP-", "").slice(0, 2) : "AD";
 
   return (
     <header className="h-[76px] border-b border-white/[0.07] flex items-center justify-between px-8 shrink-0 bg-[var(--surface)]/80 backdrop-blur-xl sticky top-0 z-20">
@@ -33,8 +46,13 @@ export default function Topbar({ email }: { email: string }) {
         <button className="top-icon relative"><Bell size={16} /><span className="absolute top-2 right-2 w-1.5 h-1.5 bg-emerald-300 rounded-full ring-2 ring-[var(--surface)]" /></button>
         <div className="h-6 w-px bg-white/[0.08] mx-1" />
         <div className="flex items-center gap-2.5 pl-1">
-          <div className="text-right hidden sm:block"><p className="text-white/70 text-xs font-medium">Admin</p><p className="text-white/25 text-[10px] mt-0.5">{email}</p></div>
-          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-white/15 to-white/[0.03] border border-white/10 flex items-center justify-center"><span className="text-white/70 text-[11px] font-semibold">{initials}</span></div>
+          <div className="text-right hidden sm:block">
+            <p className="text-white/70 text-xs font-medium">{empId}</p>
+            <p className="text-white/25 text-[10px] mt-0.5">Session: {sessId}</p>
+          </div>
+          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-white/15 to-white/[0.03] border border-white/10 flex items-center justify-center">
+            <span className="text-white/70 text-[11px] font-semibold">{initials}</span>
+          </div>
         </div>
       </div>
     </header>

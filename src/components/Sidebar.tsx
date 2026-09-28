@@ -5,8 +5,9 @@ import { usePathname, useRouter } from "next/navigation";
 import {
   Activity, BarChart3, Briefcase, FileText, Globe2, LayoutDashboard, LogOut,
   Mail, Megaphone, Newspaper, Search, Settings, ShieldCheck, Sparkles,
-  UploadCloud, Users, X,
+  UploadCloud, Users, X, ClipboardList
 } from "lucide-react";
+import { clearSessionData, logActivity } from "@/lib/audit-store";
 
 const groups = [
   { label: "Content & People", links: [
@@ -14,6 +15,9 @@ const groups = [
     { href: "/admin/contact", label: "Contacts", icon: Mail },
     { href: "/admin/careers", label: "Careers", icon: Briefcase },
     { href: "/admin/applications", label: "Applications", icon: Users },
+  ]},
+  { label: "System", links: [
+    { href: "/admin/audit-trail", label: "Audit Trail", icon: ClipboardList }
   ]}
 ];
 
@@ -22,9 +26,18 @@ export default function Sidebar() {
   const router = useRouter();
 
   async function handleLogout() {
-    await fetch("/api/logout", { method: "POST" });
-    router.push("/login");
-    router.refresh();
+    logActivity({
+        action: "LOGOUT",
+        module: "Authentication",
+        description: "User logged out from the admin panel",
+        status: "SUCCESS"
+    });
+    
+    setTimeout(() => {
+        clearSessionData();
+        router.push("/login");
+        router.refresh();
+    }, 100);
   }
 
   return (
