@@ -9,24 +9,12 @@ import {
 } from "lucide-react";
 
 const groups = [
-  { label: "Overview", links: [
-    { href: "/admin", label: "Command Center", icon: LayoutDashboard },
-    { href: "/admin/activity", label: "Activity", icon: Activity },
-  ]},
   { label: "Content & People", links: [
     { href: "/admin/blog", label: "Blog", icon: Newspaper },
     { href: "/admin/contact", label: "Contacts", icon: Mail },
     { href: "/admin/careers", label: "Careers", icon: Briefcase },
     { href: "/admin/applications", label: "Applications", icon: Users },
-    { href: "/admin/media", label: "Media Library", icon: UploadCloud },
-  ]},
-  { label: "Website", links: [
-    { href: "/admin/seo", label: "SEO & Pages", icon: Globe2 },
-  ]},
-  { label: "System", links: [
-    { href: "/admin/system", label: "System Health", icon: ShieldCheck },
-    { href: "/admin/settings", label: "Settings", icon: Settings },
-  ]},
+  ]}
 ];
 
 export default function Sidebar() {
@@ -40,14 +28,17 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="w-[272px] shrink-0 border-r border-white/[0.07] flex flex-col min-h-screen bg-[#080909]/95 backdrop-blur-xl">
+    <aside className="w-[272px] shrink-0 border-r border-white/[0.07] flex flex-col min-h-screen bg-[var(--surface)]/95 backdrop-blur-xl">
       <div className="h-[76px] px-5 border-b border-white/[0.07] flex items-center justify-between">
         <Link href="/admin" className="flex items-center gap-3">
-          <div className="brand-mark"><span>O</span></div>
-          <div>
-            <p className="text-white text-[15px] font-semibold tracking-tight">Ops<span className="text-white/40">AI</span></p>
-            <p className="text-[9px] text-white/35 uppercase tracking-[0.22em] mt-0.5">Control Center</p>
-          </div>
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 16 5 A 11 11 0 1 0 27 16" stroke="#f8faf9" strokeWidth="6.5" />
+            <path d="M 16 1.75 A 14.25 14.25 0 0 1 30.25 16" stroke="var(--accent-2)" strokeWidth="2" />
+            <path d="M 16 8.25 A 7.75 7.75 0 0 1 23.75 16" stroke="var(--accent-2)" strokeWidth="2" />
+          </svg>
+          <p className="text-white text-[19px] font-semibold tracking-tight">
+            Ops<span className="text-[var(--accent-2)]">AI</span>
+          </p>
         </Link>
         <div className="live-dot" title="System operational" />
       </div>
@@ -60,7 +51,7 @@ export default function Sidebar() {
         </button>
       </div>
 
-      <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-5">
+      <nav className="flex-1 px-3 py-4 space-y-5">
         {groups.map((group) => (
           <div key={group.label}>
             <p className="px-3 mb-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-white/25">{group.label}</p>
@@ -82,22 +73,14 @@ export default function Sidebar() {
       </nav>
 
       <div className="p-3 border-t border-white/[0.07]">
-        <a href="https://opsai.co.in" target="_blank" rel="noopener noreferrer" className="nav-item mb-1">
-          <Globe2 size={16} />
-          <span>View live website</span>
-          <span className="ml-auto text-white/20">↗</span>
-        </a>
+        <Link href="/admin/settings" className="nav-item w-full mb-1">
+          <Settings size={16} />
+          <span>Settings</span>
+        </Link>
         <button onClick={handleLogout} className="nav-item w-full text-white/40 hover:text-red-300 hover:bg-red-500/[0.06]">
           <LogOut size={16} />
           <span>Sign out</span>
         </button>
-        <div className="mt-3 rounded-xl bg-white/[0.025] border border-white/[0.06] p-3">
-          <div className="flex items-center gap-2 mb-1.5">
-            <Sparkles size={12} className="text-emerald-300" />
-            <span className="text-[10px] font-medium text-white/65">Demo environment</span>
-          </div>
-          <p className="text-[9px] text-white/30 leading-relaxed">Sample content is enabled so you can explore the full console before connecting production data.</p>
-        </div>
       </div>
     </aside>
   );
