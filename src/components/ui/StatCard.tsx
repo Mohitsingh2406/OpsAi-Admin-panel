@@ -15,8 +15,8 @@ export default function StatCard({
     <div className="bg-surface border border-border rounded-lg p-5 hover:border-border-strong transition-colors">
       <div className="flex items-center justify-between mb-4">
         <p className="text-muted text-xs font-medium tracking-wide">{label}</p>
-        <div className="w-8 h-8 rounded-md bg-surface-3 flex items-center justify-center">
-          <Icon size={16} className="text-muted" strokeWidth={1.75} />
+        <div className="w-8 h-8 rounded-md bg-[rgba(73,222,178,0.1)] flex items-center justify-center">
+          <Icon size={16} className="text-accent-2" strokeWidth={1.75} />
         </div>
       </div>
       <p className="text-foreground text-3xl font-semibold tracking-tight">{value}</p>

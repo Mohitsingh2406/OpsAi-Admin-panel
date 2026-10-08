@@ -50,7 +50,7 @@ body {
   color: var(--foreground); 
   font-family: var(--font-sans);
   background-image: 
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
   background-size: 24px 24px;
   background-attachment: fixed;
 }

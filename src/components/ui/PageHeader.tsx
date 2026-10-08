@@ -10,7 +10,9 @@ export default function PageHeader({
   return (
     <div className="flex items-start justify-between mb-7">
       <div>
-        <h1 className="text-foreground text-xl font-semibold tracking-tight">{title}</h1>
+        <h1 className="text-foreground text-2xl font-semibold tracking-tight">
+          {title} <span className="text-accent-2 font-bold animate-pulse">_</span>
+        </h1>
         {subtitle && <p className="text-muted text-sm mt-1">{subtitle}</p>}
       </div>
       {action}

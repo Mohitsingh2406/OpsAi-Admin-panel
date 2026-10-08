@@ -17,8 +17,8 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       {/* Sidebar */}
       <aside className="w-64 border-r border-border bg-surface flex flex-col hidden md:flex">
         <div className="p-6 border-b border-border">
-          <Link href="/admin" className="text-xl font-bold text-foreground">
-            OpsAI Admin
+          <Link href="/admin" className="text-xl font-bold text-foreground flex items-center">
+            OpsAI <span className="text-accent-2 ml-1">_</span>
           </Link>
           <div className="mt-2 text-xs text-muted-2">
             Role: Super Admin
@@ -29,7 +29,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             <Link
               key={item.name}
               href={item.href}
-              className="block rounded-md px-3 py-2 text-sm font-medium text-muted hover:bg-surface-2 hover:text-foreground"
+              className="block rounded-md px-3 py-2 text-sm font-medium text-muted hover:bg-surface-2 hover:text-accent-2 hover:translate-x-1 transition-all"
             >
               {item.name}
             </Link>
