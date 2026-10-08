@@ -16,7 +16,7 @@ export default function PricingPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {mockPlans.map((plan) => (
-          <div key={plan.id} className="bg-surface border border-border rounded-2xl p-6">
+          <div key={plan.id} className="bg-surface border border-border rounded-lg p-6">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-xl font-bold text-foreground">{plan.name}</h3>
               <div className="font-mono text-lg text-muted">{plan.price}</div>

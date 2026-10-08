@@ -16,7 +16,7 @@ export default function CareersPage() {
         <Button variant="primary">Add Job Posting</Button>
       </div>
 
-      <div className="rounded-2xl border border-border bg-surface overflow-hidden">
+      <div className="rounded-lg border border-border bg-surface overflow-hidden">
         <table className="w-full text-left text-sm">
           <thead className="bg-surface-2 border-b border-border text-muted">
             <tr>

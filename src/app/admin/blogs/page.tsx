@@ -15,7 +15,7 @@ export default function BlogsPage() {
         <Button variant="primary">Create Blog Post</Button>
       </div>
 
-      <div className="rounded-2xl border border-border bg-surface overflow-hidden">
+      <div className="rounded-lg border border-border bg-surface overflow-hidden">
         <table className="w-full text-left text-sm">
           <thead className="bg-surface-2 border-b border-border text-muted">
             <tr>

@@ -23,7 +23,7 @@ export default function AdminLoginPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
-      <div className="w-full max-w-md bg-surface border border-border rounded-2xl p-8">
+      <div className="w-full max-w-md bg-surface border border-border rounded-lg p-8">
         <h2 className="text-2xl font-bold text-center text-foreground mb-6">OpsAI Admin Login</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {error && (

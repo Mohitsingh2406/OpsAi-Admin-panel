@@ -18,7 +18,7 @@ export default function AdminDashboardPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-surface border border-border rounded-2xl overflow-hidden">
+        <div className="bg-surface border border-border rounded-lg overflow-hidden">
           <div className="px-6 py-4 border-b border-border">
             <h3 className="text-foreground font-semibold">Recent Activity</h3>
           </div>

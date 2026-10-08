@@ -2,10 +2,10 @@ import { LucideIcon } from "lucide-react";
 import Link from "next/link";
 
 const base =
-  "inline-flex items-center justify-center gap-1.5 rounded-lg text-sm font-medium h-9 px-3.5 transition-colors disabled:opacity-50 disabled:pointer-events-none";
+  "inline-flex items-center justify-center gap-1.5 rounded-md text-sm font-medium h-9 px-4 transition-colors disabled:opacity-50 disabled:pointer-events-none";
 
 const variants = {
-  primary: "bg-foreground text-background hover:bg-foreground/90",
+  primary: "bg-accent-2 text-background hover:opacity-90 shadow-[0_0_15px_rgba(73,222,178,0.2)]",
   secondary: "bg-surface-2 text-foreground border border-border-strong hover:bg-surface-3",
   ghost: "text-muted hover:text-foreground hover:bg-surface-2",
   danger: "text-danger hover:bg-danger-bg",
