@@ -49,9 +49,8 @@ body {
   background: var(--background); 
   color: var(--foreground); 
   font-family: var(--font-sans);
-  background-image: 
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 18px 18px;
   background-attachment: fixed;
 }
 ::selection { background: rgba(73,222,178,.22); }
